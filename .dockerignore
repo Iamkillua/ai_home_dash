@@ -1,0 +1,14 @@
+*
+!Dockerfile
+!requirements.txt
+!requirements-voice.txt
+!package.json
+!package-lock.json
+!frontend/
+!frontend/*.js
+!jarvis/
+!jarvis/*.py
+!web/
+!web/*.html
+!web/*.css
+!web/*.js

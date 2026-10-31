@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080808">
+  <title>J.A.R.V.I.S. · Home command</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='25' fill='%23080808' stroke='%23ffffff' stroke-width='3'/%3E%3Ccircle cx='32' cy='32' r='11' fill='%23ffffff'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+<!-- THESIS: An uncluttered home workspace with a living, spatial voice presence, replacing flat sci-fi instrument chrome.
+OWN-WORLD: User-approved black-and-white palette, charcoal surfaces, luminous concentric white particle spheres without lettering, rounded controls and readable system type.
+STORY: Address the assistant, inspect devices and applications, distinguish live readings from demo data; full reply focus is one click away.
+FIRST VIEWPORT: Compact text sidebar, quiet header, a wide particle stage above the device inventory, weather and RSS in a right-hand column, host metrics and application table below.
+FORM: User-pinned monochrome modern dashboard with a Three.js multi-sphere particle core. Mobile follows assistant, devices, weather, news, system, applications. -->
+<svg class="icon-defs" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10H3Z"/><path d="M9 20v-7h6v7"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="m12 3 9 5v9l-9 5-9-5V8Z"/><path d="m3 8 9 5 9-5M12 13v9m-5-17 9 5"/></symbol>
+  <symbol id="i-chip" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4m6-4v4M9 18v4m6-4v4M2 9h4m-4 6h4m12-6h4m-4 6h4"/><rect x="9" y="9" width="6" height="6"/></symbol>
+  <symbol id="i-news" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h4v4H7Zm8 0h3m-3 4h3M7 16h11"/></symbol>
+  <symbol id="i-settings" viewBox="0 0 24 24"><path d="m9 3-1 3-3 1-2 3 2 2-1 3 3 2 3-1 2 3 4-1 1-3 3-1 1-4-3-2V6l-4-2-2 2Z"/><circle cx="12" cy="11" r="3"/></symbol>
+  <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M8 16c0-3-3-3-3-7a7 7 0 0 1 14 0c0 4-3 4-3 7Zm1 3h6m-5 3h4"/></symbol>
+  <symbol id="i-power" viewBox="0 0 24 24"><path d="M12 2v9m-5-7a9 9 0 1 0 10 0"/></symbol>
+  <symbol id="i-temp" viewBox="0 0 24 24"><path d="M9 14V5a3 3 0 0 1 6 0v9a5 5 0 1 1-6 0Z"/><path d="M12 8v10"/></symbol>
+  <symbol id="i-music" viewBox="0 0 24 24"><path d="M9 18V5l11-2v13M9 9l11-2"/><ellipse cx="6" cy="18" rx="3" ry="3"/><ellipse cx="17" cy="16" rx="3" ry="3"/></symbol>
+  <symbol id="i-door" viewBox="0 0 24 24"><path d="M4 21V3h16v18M7 21V6l10-2v17Zm6-8h1"/></symbol>
+  <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="13" rx="3"/><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3m-4 0h8"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 8a8 8 0 0 0-14-3L3 8m0-5v5h5M4 16a8 8 0 0 0 14 3l3-3m0 5v-5h-5"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 1v2m0 18v2M1 12h2m18 0h2M4 4l2 2m12 12 2 2M4 20l2-2M18 6l2-2"/></symbol>
+  <symbol id="i-cloud-sun" viewBox="0 0 24 24"><path d="M9 2v2M3 5l2 2m10-3-2 2M1 11h3"/><path d="M5 12a4 4 0 1 1 7-4"/><path d="M7 19a4 4 0 1 1 1-8 6 6 0 0 1 11 1 3.5 3.5 0 0 1 0 7Z"/></symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M6 19a5 5 0 1 1 1-10 6 6 0 0 1 11-1 5.5 5.5 0 0 1 0 11Z"/></symbol>
+  <symbol id="i-rain" viewBox="0 0 24 24"><path d="M5 15a4 4 0 1 1 1-8 5 5 0 0 1 10-1 4.5 4.5 0 0 1 2 9M7 18l-1 3m6-3-1 3m6-3-1 3"/></symbol>
+  <symbol id="i-snow" viewBox="0 0 24 24"><path d="M12 2v20M3 7l18 10M3 17 21 7M9 3l3 3 3-3M9 21l3-3 3 3M3 10l4-1V5m14 5-4-1V5M3 14l4 1v4m14-5-4 1v4"/></symbol>
+  <symbol id="i-storm" viewBox="0 0 24 24"><path d="M6 16a4 4 0 1 1 1-8 5 5 0 0 1 10-1 4.5 4.5 0 0 1 1 9M12 13l-3 6h5l-2 4"/></symbol>
+  <symbol id="i-volume" viewBox="0 0 24 24"><path d="M3 9h4l5-5v16l-5-5H3Zm13-2a7 7 0 0 1 0 10m3-13a11 11 0 0 1 0 16"/></symbol>
+</defs></svg>
+<a class="skip-link" href="#main">Skip to dashboard</a>
+<aside class="rail">
+  <a class="brand-mark" href="#overview" aria-label="Jarvis home"><span>J</span><i></i></a>
+  <nav aria-label="Main navigation">
+    <a href="#overview" class="nav-link active" data-view="overview"><svg><use href="#i-grid"/></svg><span>Overview</span></a>
+    <a href="#devices" class="nav-link" data-view="devices"><svg><use href="#i-home"/></svg><span>My home</span></a>
+    <a href="#applications" class="nav-link" data-view="applications"><svg><use href="#i-box"/></svg><span>Applications</span></a>
+    <a href="#system" class="nav-link" data-view="system"><svg><use href="#i-chip"/></svg><span>System</span></a>
+    <a href="#briefing" class="nav-link" data-view="briefing"><svg><use href="#i-news"/></svg><span>Briefing</span></a>
+  </nav>
+  <button class="nav-link connection-link" id="open-connections"><svg><use href="#i-settings"/></svg><span>Connections</span></button>
+  <div class="rail-bottom"><span class="status-dot"></span><span id="rail-status">Connecting</span></div>
+</aside>
+<div class="workspace">
+  <header class="topbar">
+    <div class="wordmark">J.A.R.V.I.S.<span>HOME COMMAND</span></div>
+    <div class="topbar-right"><span class="mode-badge" id="mode-badge">CONNECTING</span><time id="clock">--:--</time><button class="button ghost" id="refresh"><svg><use href="#i-refresh"/></svg><span class="refresh-label">Refresh</span><span id="updated" class="sr-only">Connecting</span></button><span class="avatar" aria-label="Home owner">H</span></div>
+  </header>
+  <main id="main">
+    <div class="page-heading"><h1 id="page-title" hidden></h1></div>
+    <div id="global-error" class="notice error" role="alert" hidden></div>
+    <div id="demo-notice" class="demo-strip" hidden><span class="status-dot amber"></span><span><strong>Demo environment</strong> · Home, weather, applications and news are illustrative. System metrics are from this host.</span><button id="demo-connections">Connect your home <span aria-hidden="true">↗</span></button></div>
+    <section id="connections" class="connections-panel" hidden aria-labelledby="connections-title">
+      <div class="section-header"><h2 id="connections-title">Connections</h2><button class="button ghost" id="close-connections">Close</button></div>
+      <p>Secrets stay in the Python service's <code>.env</code>. Set <code>DEMO_MODE=false</code> and restart the service to connect your actual home.</p>
+      <form id="token-form"><label for="token">Dashboard access token</label><div class="token-row"><input type="password" id="token" autocomplete="off" placeholder="Token from DASHBOARD_TOKEN"><button class="button primary" type="submit">Connect</button></div><p class="muted">Kept in this tab's session storage. Use HTTPS or a trusted local connection.</p></form>
+      <div id="connection-status" class="connection-grid"></div>
+      <p class="muted">Home Assistant: URL + long-lived token · Docker: local socket or DOCKER_HOST · Weather: coordinates · RSS: feed URLs · Voice: Gemini + Picovoice keys and a Jarvis wake-word model. See README.md for setup.</p>
+    </section>
+    <div class="deck" id="overview-deck">
+      <section class="panel home-panel" id="devices" aria-labelledby="devices-title">
+        <div class="section-header"><h2 id="devices-title">My home</h2><span class="count" id="device-count">—</span></div>
+        <div class="filter-tabs" id="room-filters" aria-label="Filter devices by room"></div>
+        <div id="device-list" class="device-list"><p class="muted loading">Establishing home connection…</p></div>
+        <div class="panel-footer"><span class="status-dot"></span><span id="home-footer">Connecting to your home</span></div>
+      </section>
+      <section class="jarvis-panel" aria-labelledby="jarvis-title">
+        <div class="core-top"><h2 id="jarvis-title">At your service.</h2><span id="core-state" class="state-label">STANDBY</span></div>
+        <div class="reactor" id="reactor" data-state="idle">
+          <canvas id="core-canvas" aria-label="J.A.R.V.I.S. multi-sphere particle audio visualizer" role="img"></canvas>
+          <button type="button" class="core-center" id="focus-jarvis" aria-label="Show only J.A.R.V.I.S. and reply text" aria-pressed="false" title="Focus J.A.R.V.I.S. · click again or press Esc to return"><span id="core-caption" class="sr-only">J.A.R.V.I.S.</span></button>
+        </div>
+        <div class="core-copy"><p id="core-message">“A well-run home is a rather beautiful thing.”</p><span id="voice-description">Type a request or tap the microphone.</span></div>
+        <p id="graphics-notice" class="graphics-notice" role="status" hidden></p>
+        <div class="quick-prompts"><button data-prompt="Jarvis, how is my home?">Home status</button><button data-prompt="Jarvis, tell me the latest news">Brief me</button><button data-prompt="Jarvis, play some jazz">Play jazz</button></div>
+        <form id="command-form" class="command-form"><label class="sr-only" for="command">Ask Jarvis</label><button type="button" id="microphone" class="icon-button" aria-label="Start microphone"><svg><use href="#i-mic"/></svg></button><input id="command" placeholder="Ask Jarvis anything…" autocomplete="off" maxlength="4000"><button type="submit" id="send-command" class="send-button" aria-label="Send request"><svg><use href="#i-arrow"/></svg></button></form>
+        <div class="voice-controls"><label><input id="speech-enabled" type="checkbox" checked> Spoken replies in browser</label><button id="stop-speaking" hidden>Stop speaking</button><button id="wake-toggle" aria-pressed="false">Enable browser wake listening</button></div>
+        <details class="conversation"><summary>Conversation <span id="conversation-count">0</span></summary><div id="chat-log" aria-live="polite"></div></details>
+      </section>
+      <aside class="right-stack">
+        <section class="panel weather-panel" aria-labelledby="weather-title">
+          <div class="section-header"><h2 id="weather-title">Outside, right now</h2><svg class="weather-icon" aria-hidden="true"><use id="weather-symbol" href="#i-cloud-sun"/></svg></div>
+          <div id="weather-content"><p class="muted loading">Checking the weather…</p></div>
+          <a class="weather-credit" href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Weather by Open-Meteo ↗</a>
+        </section>
+        <section class="panel briefing-panel" id="briefing" aria-labelledby="briefing-title"><div class="section-header"><h2 id="briefing-title">The briefing</h2><span class="rss-label">RSS</span></div><div id="news-list"><p class="muted loading">Reading the feeds…</p></div><button class="briefing-action" data-prompt="Jarvis, summarize the latest RSS news">Have Jarvis brief me <svg><use href="#i-arrow"/></svg></button></section>
+      </aside>
+    </div>
+    <section class="system-section" id="system" aria-labelledby="system-title">
+      <div class="section-header"><h2 id="system-title">Behind the scenes</h2><span id="host-label" class="muted">Host telemetry · live</span></div>
+      <div class="system-grid" id="system-content"></div>
+    </section>
+    <section class="panel applications-panel" id="applications" aria-labelledby="applications-title">
+      <div class="section-header"><div class="title-with-count"><h2 id="applications-title">Application fleet</h2><span class="count" id="app-count">—</span></div><div class="fleet-actions"><button class="button ghost" data-prompt="Jarvis, tell me about my running applications"><svg><use href="#i-mic"/></svg>Ask Jarvis</button><label class="sr-only" for="app-filter">Filter applications</label><select id="app-filter"><option value="all">All applications</option><option value="running">Running</option><option value="stopped">Stopped</option></select></div></div>
+      <div id="app-error" class="notice error" hidden></div>
+      <p class="table-hint">Swipe sideways for CPU, memory, ports and actions <span aria-hidden="true">↔</span></p>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Application inventory, scroll horizontally to see all metrics"><table><thead><tr><th>Application</th><th>Status</th><th>CPU</th><th>Memory</th><th>Ports</th><th>Actions</th></tr></thead><tbody id="app-list"><tr><td colspan="6" class="muted">Inspecting the application fleet…</td></tr></tbody></table></div>
+      <div class="panel-footer"><span id="fleet-footer">Docker engine · monitoring</span><span>Control is opt-in. Jarvis has read-only application tools.</span></div>
+    </section>
+    <footer class="page-footer"><span>J.A.R.V.I.S. <span class="muted">/ Personal home intelligence</span></span><span id="voice-footer">Pi voice not connected</span></footer>
+  </main>
+</div>
+<div class="toast" id="toast" role="status" hidden></div>
+</body>
+</html>

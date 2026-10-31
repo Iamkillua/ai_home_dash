@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-31T12:46:45.486+05:30",
+  "title": "Design System: Jarvis Home Command",
+  "extensions": {
+    "shadows": [
+      {
+        "name": "toast",
+        "value": "0 8px 25px #0005",
+        "purpose": "The only explicit shadow; separates transient status feedback from the dashboard."
+      }
+    ],
+    "motion": [
+      {
+        "name": "interactive-color",
+        "value": "transition: color .18s, background .18s, border-color .18s",
+        "purpose": "Default button and link color, background, and border feedback."
+      },
+      {
+        "name": "toggle-state",
+        "value": "transition: transform .2s",
+        "purpose": "Moves the device toggle indicator between its off and on positions."
+      },
+      {
+        "name": "telemetry-meter",
+        "value": "transition: transform .6s",
+        "purpose": "Updates the system meter fill as telemetry changes."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; } }",
+        "purpose": "Disables CSS transitions and animations and avoids smooth scrolling when reduced motion is requested."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "wide",
+        "value": "min-width: 1600px",
+        "purpose": "Expands the reactor, device rows, and news spacing."
+      },
+      {
+        "name": "intermediate",
+        "value": "max-width: 1200px",
+        "purpose": "Changes the deck from three columns to two, with weather and briefing in a shared row."
+      },
+      {
+        "name": "mobile",
+        "value": "max-width: 800px",
+        "purpose": "Uses a single-column deck with the Jarvis core first, an expanding device list, and a scrollable application table with a sticky name column."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Compact cyan primary action with ink-blue text and a visible keyboard focus ring.",
+      "html": "<button class=\"ds-button-primary\" type=\"button\">Connect</button>",
+      "css": ".ds-button-primary { background: var(--cyan); color: #0a2028; border: 1px solid var(--cyan); border-radius: 4px; padding: 9px 13px; font: 600 12px \"Segoe UI\", Arial, sans-serif; transition: color .18s, background .18s, border-color .18s; } .ds-button-primary:hover { background: #a5edf0; } .ds-button-primary:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Quiet secondary action with a thin structural border.",
+      "html": "<button class=\"ds-button-ghost\" type=\"button\">Refresh</button>",
+      "css": ".ds-button-ghost { background: transparent; color: var(--text); border: 1px solid var(--line); border-radius: 4px; padding: 9px 13px; font: 400 12px \"Segoe UI\", Arial, sans-serif; transition: color .18s, background .18s, border-color .18s; } .ds-button-ghost:hover { background: #182936; border-color: #43606d; color: var(--cyan); } .ds-button-ghost:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }"
+    },
+    {
+      "name": "Dashboard Panel",
+      "kind": "card",
+      "refersTo": "panel",
+      "description": "Flat ink-blue information surface with a fine border and compact section header.",
+      "html": "<section class=\"ds-panel\"><header class=\"ds-panel-header\"><h2>My home</h2><span>4</span></header><div class=\"ds-panel-content\">Home status</div></section>",
+      "css": ".ds-panel { background: var(--surface); color: var(--text); border: 1px solid var(--line); border-radius: 5px; overflow: hidden; } .ds-panel-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 20px 20px 16px; } .ds-panel-header h2 { margin: 0; font: 500 15px \"Segoe UI\", Arial, sans-serif; } .ds-panel-content { padding: 0 20px 20px; }"
+    },
+    {
+      "name": "Command Field",
+      "kind": "input",
+      "refersTo": "command-field",
+      "description": "Transparent text entry inside the cyan-blue bordered command shell.",
+      "html": "<form class=\"ds-command-form\"><input class=\"ds-command-input\" type=\"text\" placeholder=\"Ask Jarvis anything…\" aria-label=\"Ask Jarvis\"><button class=\"ds-command-send\" type=\"submit\" aria-label=\"Send request\">→</button></form>",
+      "css": ".ds-command-form { display: flex; align-items: center; gap: 5px; padding: 5px; background: #0c1e29; border: 1px solid #395866; border-radius: 4px; } .ds-command-form:focus-within { border-color: var(--cyan); } .ds-command-input { width: 100%; min-width: 0; padding: 7px 3px; border: 0; outline: 0; background: transparent; color: var(--text); font: 400 12px \"Segoe UI\", Arial, sans-serif; } .ds-command-input::placeholder { color: #91aab9; } .ds-command-send { width: 32px; height: 30px; border: 1px solid #397c88; border-radius: 3px; background: #286071; color: #d3f6f7; } .ds-command-send:hover { background: #36798b; } .ds-command-send:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }"
+    },
+    {
+      "name": "Active Rail Navigation",
+      "kind": "nav",
+      "refersTo": "navigation-active",
+      "description": "Current destination in the fixed icon-and-label navigation rail.",
+      "html": "<nav class=\"ds-rail-nav\" aria-label=\"Main navigation\"><a class=\"ds-nav-link ds-nav-link-active\" href=\"#overview\" aria-current=\"page\"><span aria-hidden=\"true\">⌂</span><span>Overview</span></a></nav>",
+      "css": ".ds-rail-nav { width: 94px; background: #0b121a; border-right: 1px solid var(--line-soft); } .ds-nav-link { position: relative; display: flex; flex-direction: column; align-items: center; gap: 7px; padding: 13px 4px; color: var(--muted); font: 400 10px \"Segoe UI\", Arial, sans-serif; text-decoration: none; transition: color .18s, background .18s, border-color .18s; } .ds-nav-link-active { background: #11232d; color: var(--cyan); } .ds-nav-link-active::before { position: absolute; top: 15px; bottom: 15px; left: 0; width: 2px; background: var(--cyan); content: \"\"; } .ds-nav-link:hover { background: #12212b; color: var(--text); } .ds-nav-link:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }"
+    },
+    {
+      "name": "Jarvis Audio Instrument",
+      "kind": "custom",
+      "description": "Canvas-led voice core; amplitude reflects browser input, Piper playback in the browser or Pi, and returned Live PCM. Sources without PCM use honest state-only animation. The central J toggles a focus view containing only the instrument and full reply; Escape restores the dashboard.",
+      "html": "<div class=\"ds-reactor\" data-state=\"idle\"><canvas class=\"ds-reactor-canvas\" aria-label=\"Jarvis audio response visualizer\" role=\"img\"></canvas><div class=\"ds-core-center\"><span class=\"ds-core-letter\">J</span><span>JARVIS</span></div></div>",
+      "css": ".ds-reactor { position: relative; height: 275px; isolation: isolate; } .ds-reactor-canvas { position: absolute; inset: 0; width: 100%; height: 100%; } .ds-core-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; pointer-events: none; } .ds-core-letter { color: #ccf5f7; font: 200 64px/1 \"Segoe UI\", Arial, sans-serif; text-shadow: 0 3px 10px #0005; } .ds-core-center > span:last-child { margin-top: 10px; color: var(--cyan); font: 400 8px \"Segoe UI\", Arial, sans-serif; letter-spacing: .25em; } @media (prefers-reduced-motion: reduce) { .ds-reactor-canvas { animation: none !important; } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Home Command Instrument",
+    "overview": "Jarvis is a home-command instrument, not a wall of anonymous metrics. Ink-blue metal surfaces and fine cyan instrument lines establish a calm, technical field; warm amber marks demo or exception states. Squared panels and readable system type keep the interface operational.\n\nBrowser microphone input, Piper playback in the browser and Pi, and Gemini Live audio drive the canvas from actual audio amplitude. The optional old browser speech engine has no PCM, so it communicates speaking state only. Reduced-motion preferences are respected. Demo and disconnected states remain explicit. Docker metrics are labeled container-visible rather than complete Pi telemetry.",
+    "keyCharacteristics": [
+      "Ink-blue metal panels with cyan instrument detail and restrained amber markers.",
+      "A responsive, three-column operational deck centered on the Jarvis audio core.",
+      "Explicit provenance for live, demo, disconnected, and exception states.",
+      "Segoe UI system typography and squared, thin-bordered surfaces."
+    ],
+    "rules": [],
+    "dos": [
+      "Do keep the ink-blue metal, cyan instrument lines, warm amber demo/exception markers, and squared panel language.",
+      "Do preserve explicit distinctions between demo, disconnected, error, and live states.",
+      "Do drive audio amplitude visuals only from real PCM; use state-only animation when the source has no PCM.",
+      "Do honor reduced-motion preferences and retain a visible keyboard focus treatment.",
+      "Do keep the mobile command core first, allow the device list to expand, and preserve the table’s visible scroll cue and sticky name column."
+    ],
+    "donts": [
+      "Don't present illustrative home, weather, application, or news data as live telemetry.",
+      "Don't suggest a TTS waveform or measured amplitude when that audio source provides no PCM.",
+      "Don't replace the instrument palette with generic bright gradients, soften panels into heavily rounded cards, or remove the fixed navigation rail."
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+# Raspberry Pi OS ALSA device access; add explicitly, not for Windows/Desktop.
+services:
+  jarvis:
+    devices:
+      - /dev/snd:/dev/snd
+    group_add:
+      - "${AUDIO_GID:?Set AUDIO_GID to the numeric audio group ID on your Pi}"
+    environment:
+      VOICE_ENABLED: "true"

@@ -1,0 +1,5 @@
+-r requirements.txt
+pvporcupine>=3,<5
+pvrecorder>=1.2,<2
+SpeechRecognition>=3.14,<4
+PyAudio>=0.2.14,<1

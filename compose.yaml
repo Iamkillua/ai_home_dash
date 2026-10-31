@@ -1,0 +1,51 @@
+services:
+  jarvis:
+    build: .
+    image: jarvis-home:local
+    restart: unless-stopped
+    init: true
+    env_file:
+      - .env
+    environment:
+      JARVIS_CONTAINER: "true"
+      PIPER_MODEL_PATH: /models/${PIPER_VOICE:-en_GB-northern_english_male-medium}.onnx
+      PORCUPINE_MODEL_PATH: /wake/jarvis.ppn
+      DOCKER_HOST: tcp://docker-proxy:2375
+      CONTAINER_CONTROL_ENABLED: "false"
+    ports:
+      - "${JARVIS_BIND_ADDRESS:-127.0.0.1}:${JARVIS_PORT:-8000}:8000"
+    volumes:
+      - ./models:/models:ro
+      - ./wake:/wake:ro
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=64m
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - frontend
+      - docker-api
+    depends_on:
+      - docker-proxy
+
+  docker-proxy:
+    image: tecnativa/docker-socket-proxy:0.3.0
+    restart: unless-stopped
+    environment:
+      CONTAINERS: "1"
+      PING: "1"
+      VERSION: "1"
+      POST: "0"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - docker-api
+    security_opt:
+      - no-new-privileges:true
+
+networks:
+  frontend:
+  docker-api:
+    internal: true
